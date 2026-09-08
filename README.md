@@ -1,6 +1,6 @@
 # Smart_light 交叉编译工具链
 
-本仓库保存 Smart_light 当前使用的 RK3588 和 RV1106 交叉编译工具链、
+本仓库保存 Smart_light 当前使用的 RK3588、RV1106 和 RV1126B 交叉编译工具链、
 sysroot、RKNN 头文件及目标平台库。主仓库通过 `toolchain/` Git Submodule
 固定本仓库的具体 commit。
 
@@ -12,11 +12,17 @@ cross_compilation_toolchains/
 │   ├── aarch64-linux/       # aarch64-linux-gcc/g++ 及 GCC 运行时
 │   ├── sysroot/             # RK3588 glibc sysroot、OpenCV、RKNN、RGA 等
 │   └── include/             # RKNN 等平台头文件
-└── rv1106/
+├── rv1106/
     └── arm-rockchip830-linux-uclibcgnueabihf/
         ├── bin/             # RV1106 编译器
         ├── .../sysroot/     # RV1106 uClibc sysroot
         └── readme.txt       # 上游工具链安装说明
+└── rv1126b/
+    ├── bin/                 # Buildroot wrapper 与 aarch64 交叉工具
+    ├── lib/                 # GCC runtime 与启动工具
+    ├── libexec/             # GCC cc1/cc1plus/lto 工具
+    └── aarch64-buildroot-linux-gnu/
+        └── sysroot/         # RV1126B glibc、ALSA、RGA、RKNN 等开发文件
 ```
 
 当前快照来自 Smart_light 主仓原 `toolchain/` 目录，包含约 10,000 个文件、
@@ -48,6 +54,7 @@ git submodule update --init --recursive
 
 - `rk3588/` 用于 RK3588/R6C 的 aarch64 glibc 构建。
 - `rv1106/` 用于 RV1106 的 armhf/uClibc 构建。
+- `rv1126b/` 用于 Neardi LKB1126BP 当前 64 位 Buildroot/glibc 构建。
 - 工具链只提供编译和链接依赖，不代表对应平台的应用、NPU 模型或板端功能
   已完成验证。
 - 工具链版本升级应先在本仓库提交并推送，再由 Smart_light 更新 Submodule
