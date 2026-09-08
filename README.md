@@ -20,8 +20,9 @@ cross_compilation_toolchains/
 ```
 
 当前快照来自 Smart_light 主仓原 `toolchain/` 目录，包含约 10,000 个文件、
-468 个符号链接，两个平台合计约 731 MB。大型编译器、库和 sysroot 文件由
-Git LFS 管理；符号链接保持原样，避免破坏 GCC 和 sysroot 的相对路径。
+468 个符号链接，两个平台合计约 731 MB。所有内容均使用普通 Git blob 保存，
+符号链接保持原样，避免破坏 GCC 和 sysroot 的相对路径。当前单个文件小于
+GitHub 的普通 Git 单文件限制。
 
 ## 获取
 
@@ -30,7 +31,6 @@ Git LFS 管理；符号链接保持原样，避免破坏 GCC 和 sysroot 的相�
 ```bash
 git clone https://github.com/anoxia1/cross_compilation_toolchains.git
 cd cross_compilation_toolchains
-git lfs pull
 ```
 
 通过 Smart_light 获取：
@@ -39,12 +39,10 @@ git lfs pull
 git clone --recurse-submodules https://github.com/anoxia1/Smart_light.git
 cd Smart_light
 git submodule update --init --recursive
-git -C toolchain lfs pull
 ```
 
-如果只执行普通 `git clone`，LFS 文件可能只显示为 pointer；请安装 Git LFS
-并执行 `git lfs pull`。主仓 CMake 需要保持本仓库挂载在 `toolchain/`，不要
-将其移动到其他目录后再依赖隐式路径。
+主仓 CMake 需要保持本仓库挂载在 `toolchain/`，不要将其移动到其他目录后再
+依赖隐式路径。
 
 ## 平台边界
 
@@ -55,13 +53,14 @@ git -C toolchain lfs pull
 - 工具链版本升级应先在本仓库提交并推送，再由 Smart_light 更新 Submodule
   指针并重新执行双平台构建验证。
 
-## Git LFS 校验
+## 普通 Git 校验
 
 维护或发布前执行：
 
 ```bash
-git lfs fsck
 git status --short
+git fsck --full
 ```
 
-不要在未完成 LFS 上传的情况下更新 Smart_light 的 Submodule 指针。
+确认工具链仓提交、工作区和对象库均正常后，再更新 Smart_light 的 Submodule
+指针。
