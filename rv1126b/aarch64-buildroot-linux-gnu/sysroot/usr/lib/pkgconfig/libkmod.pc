@@ -7,5 +7,5 @@ Name: libkmod
 Description: Library to deal with kernel modules
 Version: 31
 Libs: -L${libdir} -lkmod
-Libs.private:   -L/home/xie/workspace/codes/neardi_lkb1126bp_sdk/Neardi-LKB1126BP-SDK-Linux-v1.2/buildroot/output/rockchip_rv1126b/host/bin/../aarch64-buildroot-linux-gnu/sysroot/usr/lib -lz 
+Libs.private:   -L${pcfiledir}/.. -lz
 Cflags: -I${includedir}

@@ -7,7 +7,7 @@ OUTPUT_FORMAT("elf32-bigaarch64", "elf32-bigaarch64",
 	      "elf32-littleaarch64")
 OUTPUT_ARCH(aarch64:ilp32)
 ENTRY(_start)
-SEARCH_DIR("=/home/xie/workspace/codes/neardi_lkb1126bp_sdk/Neardi-LKB1126BP-SDK-Linux-v1.2/buildroot/output/rockchip_rv1126b/host/aarch64-buildroot-linux-gnu/libilp32"); SEARCH_DIR("=/usr/local/libilp32"); SEARCH_DIR("=/libilp32"); SEARCH_DIR("=/usr/libilp32"); SEARCH_DIR("=/home/xie/workspace/codes/neardi_lkb1126bp_sdk/Neardi-LKB1126BP-SDK-Linux-v1.2/buildroot/output/rockchip_rv1126b/host/aarch64-buildroot-linux-gnu/lib"); SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib");
+SEARCH_DIR("=/usr/local/libilp32"); SEARCH_DIR("=/libilp32"); SEARCH_DIR("=/usr/libilp32"); SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib");
 SECTIONS
 {
   /* Read-only sections, merged into text segment: */

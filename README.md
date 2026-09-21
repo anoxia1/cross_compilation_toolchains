@@ -57,6 +57,14 @@ git submodule update --init --recursive
 - `rv1126b/` 用于 Neardi LKB1126BP 当前 64 位 Buildroot/glibc 构建。
 - 工具链只提供编译和链接依赖，不代表对应平台的应用、NPU 模型或板端功能
   已完成验证。
+- RV1126B 的 CMake、pkg-config 元数据使用相对路径，不能依赖提取 SDK 时的
+  工作区绝对路径。`.la` 和 `.prl` 属于 SDK 生成的 Libtool/qmake 辅助元数据，
+  其中会记录不可迁移的 SDK 构建目录；它们未随工具链发布，Smart_light 的
+  CMake 构建也不依赖这些文件。
+- RV1126B 当前发布边界是 Qt5 Core/Gui/Widgets/Test/Concurrent 和运行时 Qt5
+  DBus。Qt LinguistTools、DocTools、QuickCompiler 所需的 `lupdate`、`lconvert`、
+  `qdoc`、`qmlcachegen` 以及 LibVNCServer 开发导出目标未打包；若后续需要，
+  必须补齐同一 SDK 版本的完整 host 工具和目标库，不能回退到原 SDK 路径。
 - 工具链版本升级应先在本仓库提交并推送，再由 Smart_light 更新 Submodule
   指针并重新执行双平台构建验证。
 

@@ -2,7 +2,7 @@
 
     It has been auto-edited by fixincludes from:
 
-	"/home/xie/workspace/codes/neardi_lkb1126bp_sdk/Neardi-LKB1126BP-SDK-Linux-v1.2/buildroot/output/rockchip_rv1126b/host/aarch64-buildroot-linux-gnu/sysroot/usr/include/pthread.h"
+	"<RV1126B toolchain sysroot>/usr/include/pthread.h"
 
     This had to be done to correct non-standard usages in the
     original, manufacturer supplied header file.  */

@@ -19,8 +19,11 @@ import gdb
 import os
 import os.path
 
-pythondir = '/home/xie/workspace/codes/neardi_lkb1126bp_sdk/Neardi-LKB1126BP-SDK-Linux-v1.2/buildroot/output/rockchip_rv1126b/host/share/gcc-13.3.0/python'
-libdir = '/home/xie/workspace/codes/neardi_lkb1126bp_sdk/Neardi-LKB1126BP-SDK-Linux-v1.2/buildroot/output/rockchip_rv1126b/host/aarch64-buildroot-linux-gnu/lib/../lib64'
+_script_dir = os.path.dirname(os.path.abspath(__file__))
+_toolchain_root = os.path.normpath(os.path.join(_script_dir, '../../../../'))
+pythondir = os.path.join(_toolchain_root, 'host/share/gcc-13.3.0/python')
+libdir = os.path.join(_toolchain_root,
+                      'aarch64-buildroot-linux-gnu/lib64')
 
 # This file might be loaded when there is no current objfile.  This
 # can happen if the user loads it manually.  In this case we don't

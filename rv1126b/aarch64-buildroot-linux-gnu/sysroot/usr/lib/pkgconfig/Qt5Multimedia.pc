@@ -1,4 +1,4 @@
-prefix=/home/xie/workspace/codes/neardi_lkb1126bp_sdk/Neardi-LKB1126BP-SDK-Linux-v1.2/buildroot/output/rockchip_rv1126b/host/aarch64-buildroot-linux-gnu/sysroot/usr
+prefix=${pcfiledir}/../..
 exec_prefix=${prefix}
 libdir=/usr/lib
 includedir=/usr/include/qt5
@@ -10,4 +10,3 @@ Version: 5.15.11
 Libs: -L${libdir} -lQt5Multimedia 
 Cflags: -DQT_MULTIMEDIA_LIB -I${includedir}/QtMultimedia -I${includedir}
 Requires: Qt5Core Qt5Network Qt5Gui
-

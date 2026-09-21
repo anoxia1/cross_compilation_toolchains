@@ -36,6 +36,27 @@ SDK 中与本项目交叉编译无关的 Qt、LLVM、Vulkan、GStreamer、Perl �
 组件未提取。sysroot 保留了 glibc/C++ 基础运行库、ALSA、RGA、DRM、udev、
 zlib、RKNN Runtime 及对应头文件。
 
+## 可迁移性与支持边界
+
+该快照可以被复制到任意工作区使用，不依赖原始 SDK 的绝对路径。Qt5 的
+CMake 配置和 pkg-config 文件使用相对路径；GCC `mkheaders` 也根据自身位置
+计算 sysroot。发布快照中没有 `.la`、`.prl` 这类会嵌入 SDK 构建目录的
+Libtool/qmake 元数据，Smart_light 的 CMake 构建不读取它们。
+
+当前项目验证并支持的 Qt5 组件为 Core、Gui、Widgets、Test、Concurrent，
+同时保留 Qt5 DBus 运行库。以下可选开发工具不在该轻量工具链中：
+
+| 组件 | 未提供内容 | 处理方式 |
+| --- | --- | --- |
+| Qt DBus 代码生成 | `qdbuscpp2xml`、`qdbusxml2cpp` | 需要时补齐可迁移的 Qt host 工具 |
+| Qt LinguistTools | `lupdate`、`lconvert` | 当前产品构建不启用翻译生成 |
+| Qt DocTools | `qdoc` 及其 LLVM/Clang 运行时 | 当前产品构建不生成 API 文档 |
+| Qt QuickCompiler | `qmlcachegen` | 当前产品构建不编译 QML 缓存 |
+| LibVNCServer 开发包 | 导出 target 及对应开发库 | 产品 VNC 使用 Xvfb/x11vnc 运行链路 |
+
+如果误用上述组件，CMake 会直接报告“工具链未包含该组件”，而不会引用
+提取 SDK 主机上的路径。
+
 ## 编译器自检
 
 在仓库根目录执行：

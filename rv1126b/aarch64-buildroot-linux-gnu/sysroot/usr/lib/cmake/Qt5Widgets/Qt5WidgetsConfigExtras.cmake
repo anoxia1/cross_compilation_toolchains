@@ -2,7 +2,7 @@
 if (NOT TARGET Qt5::uic)
     add_executable(Qt5::uic IMPORTED)
 
-    set(imported_location "/home/xie/workspace/codes/neardi_lkb1126bp_sdk/Neardi-LKB1126BP-SDK-Linux-v1.2/buildroot/output/rockchip_rv1126b_vnc/host/bin/uic")
+    set(imported_location "${CMAKE_CURRENT_LIST_DIR}/../../../../../../host/bin/uic")
     _qt5_Widgets_check_file_exists(${imported_location})
 
     set_target_properties(Qt5::uic PROPERTIES

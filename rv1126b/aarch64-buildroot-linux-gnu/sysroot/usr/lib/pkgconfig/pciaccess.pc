@@ -8,4 +8,4 @@ Description: Library providing generic access to the PCI bus and devices.
 Version: 0.17
 Cflags: -I${includedir}
 Libs: -L${libdir} -lpciaccess
-Libs.Private:  -L/home/xie/workspace/codes/neardi_lkb1126bp_sdk/Neardi-LKB1126BP-SDK-Linux-v1.2/buildroot/output/rockchip_rv1126b_vnc/host/bin/../aarch64-buildroot-linux-gnu/sysroot/usr/lib -lz 
+Libs.Private:  -L${pcfiledir}/../../../../../host/bin/../aarch64-buildroot-linux-gnu/sysroot/usr/lib -lz

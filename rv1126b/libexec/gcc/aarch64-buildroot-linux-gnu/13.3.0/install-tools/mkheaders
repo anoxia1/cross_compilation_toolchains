@@ -53,7 +53,8 @@ if [ x$1 != x ] ; then
   prefix=$1
   shift
 else
-  prefix=/home/xie/workspace/codes/neardi_lkb1126bp_sdk/Neardi-LKB1126BP-SDK-Linux-v1.2/buildroot/output/rockchip_rv1126b/host
+  script_dir=`CDPATH= cd -- "$(dirname "$0")" && pwd`
+  prefix=`CDPATH= cd -- "${script_dir}/../../../../../" && pwd`
 fi
 
 # Allow for alternate isysroot in which to find headers
